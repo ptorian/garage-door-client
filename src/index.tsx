@@ -18,7 +18,7 @@ async function load() {
         }
     } catch (e) {
         if (e.response == null || (e.response.status !== 401 && e.response.status !== 403)) {
-            console.error("An error occurred while trying to get the logged in user from the cookie based session", e);
+            console.error("An error occurred while trying to get the logged in user from the saved auth token", e);
         }
     }
 

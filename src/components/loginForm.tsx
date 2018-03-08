@@ -7,7 +7,7 @@ const UnwrappedLoginForm = (props: any) => (
         {props.authSession.isError ? <p className="alert alert-danger">{props.authSession.errorMessage}</p> : ""}
         <h2>Please sign in</h2>
         <FormGroup>
-            <Field name="username" component="input" className="form-control" type="text" placeholder="Username"
+            <Field name="email" component="input" className="form-control" type="text" placeholder="Email"
                    style={{maxWidth: "280px"}}/>
         </FormGroup>
         <FormGroup>

@@ -5,7 +5,7 @@ import {bindActionCreators} from "redux";
 import {LoginForm} from "../components/loginForm";
 
 class LoginFormValues {
-    username: string;
+    email: string;
     password: string;
 }
 
@@ -13,7 +13,7 @@ class UnwrappedLoginFormContainer extends React.Component {
     props: any;
 
     async onSubmit(values: LoginFormValues) {
-        await this.props.actions.submitAuth(values.username, values.password);
+        await this.props.actions.submitAuth(values.email, values.password);
     };
 
     render() {

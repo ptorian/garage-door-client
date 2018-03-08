@@ -33,7 +33,7 @@ export const setAuthToken = (authToken: any) => async (dispatch: Dispatch<any>) 
     const parsedToken = authToken == null ? null : authService.parseJwt(authToken);
     if (parsedToken != null && Math.round((new Date()).getTime() / 1000) < parsedToken.exp) {
         window.localStorage.setItem("authToken", authToken);
-        const {data: user} = await userService.getUserById(parsedToken.user_id);
+        const {data: user} = await userService.getUserById(parsedToken.currentUserId);
         dispatch({
             type: authActionTypes.AUTH_SET_TOKEN,
             payload: {authToken, user}
@@ -53,14 +53,14 @@ export const setAuth = (user: any) => async (dispatch: Dispatch<any>) => {
     });
 };
 
-export const submitAuth = (username: string, password: string) => async (dispatch: Dispatch<any>) => {
+export const submitAuth = (email: string, password: string) => async (dispatch: Dispatch<any>) => {
     dispatch({
         type: authActionTypes.AUTH_LOGIN_PENDING,
         payload: {}
     });
 
     try {
-        await authService.login(username, password);
+        await authService.login(email, password);
     } catch (e) {
         dispatch({
             type: authActionTypes.AUTH_LOGIN_ERROR,
