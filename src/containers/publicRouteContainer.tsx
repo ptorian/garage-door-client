@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {PublicRoute} from "../components/routeHelperComponents/publicRoute";
+import PublicRoute from "../components/routeHelperComponents/publicRoute";
 
-class UnwrappedPublicRouteContainer extends React.Component {
+class PublicRouteContainer extends React.Component {
     props: any;
 
     render() {
@@ -12,4 +12,4 @@ class UnwrappedPublicRouteContainer extends React.Component {
     }
 }
 
-export const PublicRouteContainer: any = connect((state: any) => ({authSession: state.authSession}))(UnwrappedPublicRouteContainer);
+export default connect((state: any) => ({authSession: state.authSession}))(PublicRouteContainer) as any;

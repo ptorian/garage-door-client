@@ -1,9 +1,9 @@
 import React from 'react'
 import {connect} from "react-redux";
 
-import {MainDashboard} from "../components/mainDashboard";
+import MainDashboard from "../components/mainDashboard";
 
-class UnwrappedMainDashboardContainer extends React.Component {
+class MainDashboardContainer extends React.Component {
     props: any;
 
     render() {
@@ -13,4 +13,4 @@ class UnwrappedMainDashboardContainer extends React.Component {
     }
 }
 
-export const MainDashboardContainer = connect((state: any) => ({authSession: state.authSession}), null, null, {pure: false})(UnwrappedMainDashboardContainer);
+export default connect((state: any) => ({authSession: state.authSession}), null, null, {pure: false})(MainDashboardContainer);

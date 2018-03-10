@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {PrivateRoute} from "../components/routeHelperComponents/privateRoute";
+import PrivateRoute from "../components/routeHelperComponents/privateRoute";
 
-class UnwrappedPrivateRouteContainer extends React.Component {
+class PrivateRouteContainer extends React.Component {
     props: any;
 
     render() {
@@ -12,4 +12,4 @@ class UnwrappedPrivateRouteContainer extends React.Component {
     }
 }
 
-export const PrivateRouteContainer: any = connect((state: any) => ({authSession: state.authSession}))(UnwrappedPrivateRouteContainer);
+export default connect((state: any) => ({authSession: state.authSession}))(PrivateRouteContainer) as any;

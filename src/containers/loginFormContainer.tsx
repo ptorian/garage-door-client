@@ -2,14 +2,14 @@ import React from 'react'
 import {connect} from "react-redux";
 import {submitAuth} from "../actions/authActions";
 import {bindActionCreators} from "redux";
-import {LoginForm} from "../components/loginForm";
+import LoginForm from "../components/loginForm";
 
 class LoginFormValues {
     email: string;
     password: string;
 }
 
-class UnwrappedLoginFormContainer extends React.Component {
+class LoginFormContainer extends React.Component {
     props: any;
 
     async onSubmit(values: LoginFormValues) {
@@ -23,4 +23,16 @@ class UnwrappedLoginFormContainer extends React.Component {
     }
 }
 
-export const LoginFormContainer = connect((state: any) => ({authSession: state.authSession}), dispatch => ({actions: bindActionCreators({submitAuth}, dispatch)}))(UnwrappedLoginFormContainer);
+function mapStateToProps(state: any) {
+    return {
+        authSession: state.authSession
+    };
+}
+
+function mapActionToProps(dispatch: any) {
+    return {
+        actions: bindActionCreators({submitAuth}, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapActionToProps)(LoginFormContainer);
