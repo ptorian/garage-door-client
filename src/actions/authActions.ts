@@ -29,20 +29,30 @@ export const logout = () => async (dispatch: Dispatch<any>) => {
     });
 };
 
-export const setAuthToken = (authToken: any) => async (dispatch: Dispatch<any>) => {
+export const getAuthToken = () => {
+    return window.localStorage.getItem("authToken");
+};
+
+export const setAuthToken = (authToken: string, forceActionDispatch = false) => async (dispatch: Dispatch<any>) => {
     const parsedToken = authToken == null ? null : authService.parseJwt(authToken);
+    const oldAuthToken = getAuthToken();
+    const oldParsedToken = oldAuthToken == null ? null : authService.parseJwt(oldAuthToken);
     if (parsedToken != null && Math.round((new Date()).getTime() / 1000) < parsedToken.exp) {
         window.localStorage.setItem("authToken", authToken);
-        const {data: user} = await userService.getUserById(parsedToken.currentUserId);
-        dispatch({
-            type: authActionTypes.AUTH_SET_TOKEN,
-            payload: {authToken, user}
-        });
+        if (forceActionDispatch || oldParsedToken == null || oldParsedToken.currentUserId !== parsedToken.currentUserId) {
+            const {data: user} = await userService.getUserById(parsedToken.currentUserId);
+            dispatch({
+                type: authActionTypes.AUTH_SET_TOKEN,
+                payload: {authToken, user}
+            });
+        }
     } else {
-        dispatch({
-            type: authActionTypes.AUTH_CLEAR_TOKEN,
-            payload: null
-        });
+        if (forceActionDispatch || oldAuthToken != null) {
+            dispatch({
+                type: authActionTypes.AUTH_CLEAR_TOKEN,
+                payload: null
+            });
+        }
     }
 };
 

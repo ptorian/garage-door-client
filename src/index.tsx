@@ -14,7 +14,7 @@ async function load() {
     try {
         const authToken = window.localStorage.getItem("authToken");
         if (authToken != null) {
-            await authActions.setAuthToken(authToken)(store.dispatch);
+            await authActions.setAuthToken(authToken, true)(store.dispatch);
         }
     } catch (e) {
         if (e.response == null || (e.response.status !== 401 && e.response.status !== 403)) {
