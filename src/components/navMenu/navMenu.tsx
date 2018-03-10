@@ -8,11 +8,8 @@ import NavMenuLogOutLinkContainer from "../../containers/navMenuLogOutLinkContai
 const NavMenu = (props: any) => (
     <Navbar>
         <Nav>
-            <LinkContainer to="/home">
-                <NavItem>
-                    Home
-                </NavItem>
-            </LinkContainer>
+            {props.authSession.isAuthenticated ? <LinkContainer to="/home"><NavItem>Home</NavItem></LinkContainer> : null}
+            {props.authSession.isAuthenticated ? <LinkContainer to="/garage-doors"><NavItem>Garage doors</NavItem></LinkContainer> : null}
             {props.authSession.isAuthenticated ? <NavMenuLogOutLinkContainer/> : <NavMenuLoginLink/>}
         </Nav>
     </Navbar>

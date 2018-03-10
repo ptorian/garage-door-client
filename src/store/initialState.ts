@@ -1,5 +1,6 @@
 export class State {
     authSession: StateAuthSession;
+    garageDoorList: StateGarageDoorList;
 }
 
 export class StateAuthSession {
@@ -10,6 +11,10 @@ export class StateAuthSession {
     user: any;
 }
 
+export class StateGarageDoorList {
+    garageDoors: any[]
+}
+
 export const initialState: State = {
     authSession: {
         isPending: false,
@@ -17,5 +22,8 @@ export const initialState: State = {
         isError: false,
         errorMessage: null,
         user: null
+    },
+    garageDoorList: {
+        garageDoors: null
     }
 };
