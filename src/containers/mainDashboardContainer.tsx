@@ -13,4 +13,10 @@ class MainDashboardContainer extends React.Component {
     }
 }
 
-export default connect((state: any) => ({authSession: state.authSession}), null, null, {pure: false})(MainDashboardContainer);
+function mapStateToProps(state: any) {
+    return {
+        authSession: state.authSession
+    };
+}
+
+export default connect(mapStateToProps, null, null, {pure: false})(MainDashboardContainer);

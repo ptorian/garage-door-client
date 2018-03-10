@@ -14,4 +14,10 @@ class NavMenuLogOutLinkContainer extends React.Component {
     }
 }
 
-export default connect(null, dispatch => ({actions: bindActionCreators({logout}, dispatch)}))(NavMenuLogOutLinkContainer);
+function mapActionToProps(dispatch: any) {
+    return {
+        actions: bindActionCreators({logout}, dispatch)
+    };
+}
+
+export default connect(null, mapActionToProps)(NavMenuLogOutLinkContainer);

@@ -12,4 +12,10 @@ class PrivateRouteContainer extends React.Component {
     }
 }
 
-export default connect((state: any) => ({authSession: state.authSession}))(PrivateRouteContainer) as any;
+function mapStateToProps(state: any) {
+    return {
+        authSession: state.authSession
+    };
+}
+
+export default connect(mapStateToProps)(PrivateRouteContainer) as any;
