@@ -9,8 +9,10 @@ import { store } from "./store/store"
 import { history } from "./store/history"
 import App from './components/app'
 import * as authActions from "./actions/authActions";
+import {socketService} from "./services/socketService";
 
 async function load() {
+    socketService.connect();
     try {
         const authToken = window.localStorage.getItem("authToken");
         if (authToken != null) {
