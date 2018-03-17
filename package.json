@@ -36,7 +36,6 @@
     "@types/react-router-dom": "^4.2.4",
     "@types/react-router-redux": "^5.0.12",
     "@types/redux-form": "^7.0.14",
-    "@types/webpack": "^3.8.8",
     "css-loader": "^0.28.10",
     "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "http-server": "^0.11.1",
