@@ -12,6 +12,7 @@ const GarageDoorList = (props: GarageDoorListProps) => (
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Nickname</th>
                 <th>Status</th>
                 <th>Last seen date</th>
                 <th></th>
@@ -21,6 +22,7 @@ const GarageDoorList = (props: GarageDoorListProps) => (
             {props.garageDoors != null ? props.garageDoors.map(garageDoor => (
                 <tr key={garageDoor.id}>
                     <td>{garageDoor.id}</td>
+                    <td>{garageDoor.nickname}</td>
                     <td>{garageDoor.status}</td>
                     <td>{garageDoor.last_seen_date}</td>
                     <td>
